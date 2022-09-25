@@ -10,7 +10,7 @@ const respuesta2 = document.getElementById("res2")
 const respuesta3 = document.getElementById("res3")
 const respuesta4 = document.getElementById("res4")
 const botonesCategorias = document.getElementById("botones-categorias")
-const btnCicloBasico = document.getElementById("btn-ciclo-basico")
+const btnCulturaGeneral = document.getElementById("btn-cultura-general")
 const btnProgramacion = document.getElementById("btn-programacion")
 const btnMultimedia = document.getElementById("btn-multimedia")
 const elementoContador=document.getElementById("timer")
@@ -29,8 +29,8 @@ btnSiguiente.addEventListener("click", ()=>{
 })
 Array.from(botonesCategorias.children).forEach(categoria =>{
   categoria.addEventListener("click", (e)=>{
-   if (e.target==btnCicloBasico) {
-    iniciarCicloBasico()
+   if (e.target==btnCulturaGeneral) {
+    iniciarCulturaGeneral()
     console.log("ciclo basico")
    }
    if (e.target==btnProgramacion) {
@@ -45,13 +45,13 @@ Array.from(botonesCategorias.children).forEach(categoria =>{
 })
 function iniciar(){
     btnIniciar.classList.add("ocultar")
-    btnCicloBasico.classList.remove("ocultar")
+    btnCulturaGeneral.classList.remove("ocultar")
     btnProgramacion.classList.remove("ocultar")
     btnMultimedia.classList.remove("ocultar")
 }
-function iniciarCicloBasico(){
+function iniciarCulturaGeneral(){
     indicePreguntaActual=0;
-    preguntas=preguntasCicloBasico
+    preguntas=preguntasCulturaGeneral
     containerPregunta.classList.remove("ocultar");
     detenerTiempo()
     iniciarTiempo(15)
@@ -84,10 +84,9 @@ function iniciarMultimedia(){
 }
 function desocultar(){
   btnReiniciar.classList.remove("ocultar");
-  btnSiguiente.classList.remove("ocultar");
 }
 function ocultarCategorias() {
-  btnCicloBasico.classList.add("ocultar")
+  btnCulturaGeneral.classList.add("ocultar")
   btnProgramacion.classList.add("ocultar")
   btnMultimedia.classList.add("ocultar")
 }
@@ -96,7 +95,7 @@ function reiniciar(){
     containerPregunta.classList.add("ocultar");
     btnReiniciar.classList.add("ocultar");
     btnSiguiente.classList.add("ocultar");
-    btnCicloBasico.classList.add("ocultar")
+    btnCulturaGeneral.classList.add("ocultar")
     btnProgramacion.classList.add("ocultar")
     btnMultimedia.classList.add("ocultar")
     detenerTiempo
@@ -132,15 +131,17 @@ function seleccionarRespuesta(e){
   const correcto=respuestaSeleccionada.dataset.correcto
   Array.from(containerRespuestas.children).forEach(btn=>{
     cambiarColor(btn, btn.dataset.correcto)
+    btn.disabled= true;
   })
+  
+  if(correcto){
+    puntaje++
+  }
   if(preguntas.length>indicePreguntaActual+1){
     btnSiguiente.classList.remove("ocultar")
   } else{
     btnReiniciar.classList.remove("ocultar")
     mostrarPuntaje()
-  }
-  if(e.target.dataset.correcto){
-    puntaje++
   }
   detenerTiempo()
 }
@@ -166,6 +167,11 @@ function iniciarTiempo(tiempo){
     if(tiempo<0){
       clearInterval(contador)
       elementoContador.innerHTML="15"
+      mostrarPuntaje()
+      Array.from(containerRespuestas.children).forEach(btn=>{
+        cambiarColor(btn, btn.dataset.correcto)
+        btn.disabled= true;
+      })
     }
   }
 }
@@ -174,8 +180,8 @@ function detenerTiempo(){
 }
 
 function mostrarPuntaje(){
+  elementoPuntaje.innerHTML = `Puntaje: ${puntaje}`
   elementoPuntaje.classList.remove("ocultar")
-    elementoPuntaje.innerHTML = `Puntaje: ${puntaje}`
     containerPregunta.appendChild(elementoPuntaje)
 }
 
@@ -186,7 +192,7 @@ function ocultarPuntaje(){
 
 let preguntas = []
 
- const preguntasCicloBasico = [
+ const preguntasCulturaGeneral = [
      {
        pregunta: '¿Cuánto es 2+2?',
        respuestas: [
@@ -197,65 +203,69 @@ let preguntas = []
        ]
      },
      {
-       pregunta: 'Pregunta 2',
+       pregunta: '¿Cuántos huesos tiene el cuerpo humano?',
        respuestas: [
-         { texto: 'respuesta', correcto: true },
-         { texto: 'respuesta', correcto: true },
-         { texto: 'respuesta', correcto: true },
-         { texto: 'respuesta', correcto: true }
+         { texto: '210', correcto: false },
+         { texto: '198', correcto: false },
+         { texto: '206', correcto: true },
+         { texto: '6', correcto: false }
        ]
      },
      {
-       pregunta: 'pregunta?',
+       pregunta: '¿Qué suceso se conmemora en el día 17 de agosto?',
        respuestas: [
-         { texto: 'respuesta', correcto: false },
-         { texto: 'respuesta', correcto: true },
-         { texto: 'respuesta', correcto: false },
-         { texto: 'respuesta', correcto: false }
+         { texto: 'El paso a la inmortalidad del general Don José de San Martín', correcto: true },
+         { texto: 'Día de la soberanía nacional', correcto: false },
+         { texto: 'Navidad', correcto: false },
+         { texto: 'Día de la diversidad cultural', correcto: false }
        ]
      },
      {
-       pregunta: 'pregunta',
+       pregunta: '¿Cuántos años tiene un lustro?',
        respuestas: [
-         { texto: 'respuesta', correcto: false },
-         { texto: 'respuesta', correcto: true }
+         { texto: '25', correcto: false },
+         { texto: '100', correcto: false },
+         { texto: 'Todos', correcto: false },
+         { texto: '5', correcto: true}
        ]
      }
    ]
 
    const preguntasProgramacion = [
     {
-      pregunta: '¿Cuánto es 2+2?',
+      pregunta: '¿Cómo se representa el número binario 1010 en decimal?',
       respuestas: [
-        { texto: '4', correcto: true },
-        { texto: '22', correcto: false },
-        { texto:'5', correcto:false },
-        { texto:'5', correcto:false },
+        { texto: '1010', correcto: false },
+        { texto: '20', correcto: false },
+        { texto:'10', correcto:true },
+        { texto:'15', correcto:false }
       ]
     },
     {
-      pregunta: 'Pregunta 2',
+      pregunta: '¿Qué significan las siglas "POO"?',
       respuestas: [
-        { texto: 'respuesta', correcto: true },
-        { texto: 'respuesta', correcto: true },
-        { texto: 'respuesta', correcto: true },
-        { texto: 'respuesta', correcto: true }
+        { texto: 'Programación orientada a objetos', correcto: true },
+        { texto: 'Protocolo optimizado de operabilidad', correcto: false },
+        { texto: 'Paltas orientales ostentosas', correcto: false },
+        { texto: 'Programacion orientada a organismos', correcto: false }
       ]
     },
     {
-      pregunta: 'pregunta?',
+      pregunta: '¿Qué es "Visual Basic"?',
       respuestas: [
-        { texto: 'respuesta', correcto: false },
-        { texto: 'respuesta', correcto: true },
-        { texto: 'respuesta', correcto: false },
-        { texto: 'respuesta', correcto: false }
+        { texto: 'Una empresa de relojes', correcto: false },
+        { texto: 'Un lenguaje de programación', correcto: true },
+        { texto: 'Una herramienta de tortura', correcto: true },
+        { texto: 'Un protocolo de red', correcto: false }
       ]
     },
     {
-      pregunta: 'pregunta',
+      pregunta: 'En HTML, ¿Qué etiqueta se utiliza para establecer un enlace a otra página web?',
       respuestas: [
-        { texto: 'respuesta', correcto: false },
-        { texto: 'respuesta', correcto: true }
+        { texto: 'link', correcto: false },
+        { texto: 'enl', correcto: false },
+        { texto: 'l', correcto: false},
+        { texto: 'a', correcto: true}
       ]
     }
   ]
