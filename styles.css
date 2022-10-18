@@ -84,6 +84,7 @@ body{
 }
 .correcto{
     background-color: var(--color-correcto);
+    color: black;
 }
 .incorrecto{
     background-color: var(--color-incorrecto);
