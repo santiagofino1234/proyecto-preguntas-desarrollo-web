@@ -194,12 +194,12 @@ let preguntas = []
 
  const preguntasCulturaGeneral = [
      {
-       pregunta: '¿Cuánto es 2+2?',
+       pregunta: '¿Quién dijo "Pienso, luego existo"?',
        respuestas: [
-         { texto: '4', correcto: true },
-         { texto: '22', correcto: false },
-         { texto:'5', correcto:false },
-         { texto:'5', correcto:false },
+         { texto: 'Sócrates', correcto: true },
+         { texto: 'Platón', correcto: false },
+         { texto:'Diógenes', correcto:false },
+         { texto:'Descartes', correcto:false },
        ]
      },
      {
@@ -228,7 +228,62 @@ let preguntas = []
          { texto: 'Todos', correcto: false },
          { texto: '5', correcto: true}
        ]
-     }
+     },
+     {
+      pregunta: '¿Quién pintó la obra "Guernica"?',
+      respuestas: [
+        { texto: 'Vincent Van Gogh', correcto: false },
+        { texto: 'Pablo Picasso', correcto: true },
+        { texto: 'Salvador Dalí', correcto: false },
+        { texto: 'Diego Velázquez', correcto: false}
+
+      ]
+    },
+    {
+      pregunta: '¿Cuánto tiempo tarda la luz en llegar del Sol a la Tierra?',
+      respuestas: [
+        { texto: '5 minutos', correcto: false },
+        { texto: '1 año', correcto: false },
+        { texto: '8 minutos', correcto: true},
+        { texto: '13.2 segundos', correcto: false }
+      ]
+    },
+    {
+      pregunta: '¿En qué país de África el español es la lengua oficial?',
+      respuestas: [
+        { texto: 'Sierra Leona', correcto: false },
+        { texto: 'Guinea Ecuatorial', correcto: true },
+        { texto: 'Costa de Marfil', correcto: false },
+        { texto: 'Marruecos', correcto: false}
+      ]
+    },
+    {
+      pregunta: '¿Cuál es la conjugación del verbo "caber" en la primera persona del singular del presente indicativo?',
+      respuestas: [
+        { texto: 'Yo quepo', correcto: true },
+        { texto: 'Nosotros cabemos', correcto: false },
+        { texto: 'Yo cabo', correcto: false },
+        { texto: 'Nosotros quepemos', correcto: false}
+      ]
+    },
+    {
+      pregunta: '¿Cuál es la isla más grande del mundo?',
+      respuestas: [
+        { texto: 'Australia', correcto: false },
+        { texto: 'Papúa Nueva Guinea', correcto: false },
+        { texto: 'Gran Malvina', correcto: false },
+        { texto: 'Groenlandia', correcto: true}
+      ]
+    },
+    {
+      pregunta: '¿Cuáles son las partes de una fracción?',
+      respuestas: [
+        { texto: 'Número y denominado', correcto: false },
+        { texto: 'Superior e inferior', correcto: false },
+        { texto: 'El de arriba y el de abajo', correcto: false },
+        { texto: 'Numerador y denominador', correcto: true}
+      ]
+    }
    ]
 
    const preguntasProgramacion = [
@@ -267,7 +322,34 @@ let preguntas = []
         { texto: 'l', correcto: false},
         { texto: 'a', correcto: true}
       ]
-    }
+    },
+    {
+      pregunta: '¿Cuál es el lenguaje de programación más usado?',
+      respuestas: [
+        { texto: 'Java', correcto: false },
+        { texto: 'Python', correcto: true },
+        { texto: 'C', correcto: false },
+        { texto: 'C#', correcto: false }
+      ]
+    },
+    {
+      pregunta: 'En JavaScript, ¿Con que símbolo se ponen comentarios de una línea?',
+      respuestas: [
+        { texto: '//', correcto: true },
+        { texto: '#', correcto: false },
+        { texto: '{}', correcto: false },
+        { texto: '/**/', correcto: false }
+      ]
+    },
+    {
+      pregunta: '¿Cómo se llama el lenguaje de consultas usado en bases de datos relacionales?',
+      respuestas: [
+        { texto: 'Visual Basic', correcto: false },
+        { texto: 'SQL', correcto: true },
+        { texto: 'CQL', correcto: false },
+        { texto: 'C++', correcto: false }
+      ]
+    },
   ]
 
   const preguntasMultimedia = [
